@@ -1,5 +1,6 @@
 # colovo
 
+```mermaid
 graph TD
     %% Estilos e Cores Gerais
     classDef files fill:#f9f9f9,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5;
@@ -40,3 +41,4 @@ graph TD
     class A,C,D3,D4 files;
     class B,D,E scripts;
     class F models;
+```
