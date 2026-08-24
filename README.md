@@ -118,6 +118,7 @@ Para rodar a aplicação interativa de análise unitária em tempo real, execute
 ```bash
 streamlit run app/streamlit_app.py
 ```
+> *Nota*: Para fins acadêmicos o projeto colovo encontra-se deployado na plataforma Streamlit Community Cloud: https://colovo.streamlit.app
 
 ## Passos de Treinamento e Reprodução
 Se desejar reconfigurar, atualizar os pesos da IA ou treinar novamente o estimador estatístico do zero, execute a sequência abaixo:
