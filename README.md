@@ -91,12 +91,19 @@ graph TD
     class F,I out;
 ```
 
-## Como Usar
-### Executando a Interface Web (Streamlit)
-Para rodar a aplicação interativa de análise unitária em tempo real, execute o comando:
+## Instalação de um ambiente local
+Sequência de passos para a instalação local do colovo usando um ambiente virtual:
 ```bash
-streamlit run app/streamlit_app.py
+# Criação de um ambiente virtual
+python -m venv env_colovo
+# Ativação do ambiente virtual
+source env_colovo/bin/activate
+# Instalação das bibliotecas python
+pip install -r requirements.txt
+# Instalação local do colovo
+pip install -e .
 ```
+
 ## Passos de Treinamento e Reprodução
 Se desejar reconfigurar, atualizar os pesos da IA ou treinar novamente o estimador estatístico do zero, execute a sequência abaixo:
 
@@ -115,4 +122,11 @@ python scripts/train_segmentation.py
 ### Extração de features colorimétricas e treino do modelo DSM:
 ```bash
 python scripts/train_dsm.py
+```
+
+## Como Usar
+### Executando a Interface Web (Streamlit)
+Para rodar a aplicação interativa de análise unitária em tempo real, execute o comando:
+```bash
+streamlit run app/streamlit_app.py
 ```
