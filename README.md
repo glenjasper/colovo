@@ -94,6 +94,10 @@ graph TD
 ## Instalação de um ambiente local
 Sequência de passos para a instalação local do colovo usando um ambiente virtual:
 ```bash
+# Baixar o código fonte
+git clone https://github.com/glenjasper/colovo.git
+cd colovo
+
 # Criação de um ambiente virtual
 python -m venv env_colovo
 # Ativação do ambiente virtual
