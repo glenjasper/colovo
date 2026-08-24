@@ -2,6 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
+
+# Garante que o Streamlit Cloud enxergue a raiz do projeto como caminho de busca do Python
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import cv2
 import streamlit as st
 from colovo.utils.image import load_image
