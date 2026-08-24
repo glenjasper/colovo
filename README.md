@@ -1,4 +1,4 @@
-# colovo
+# COLOVO
 Sistema Híbrido de Visão Computacional para Classificação de Gemas de OvosO COLOVO é uma plataforma automatizada voltada para a avicultura de precisão e controle de qualidade laboratorial. Seu objetivo principal é mensurar o nível de pigmentação da gema do ovo com base na escala comercial DSM (Digital Yolk Color Fan).
 O sistema substitui a avaliação visual humana subjetiva por um pipeline rigoroso de visão computacional e inteligência artificial, combinando processamento digital de imagens clássico, redes neurais convolucionais (U-Net) para segmentação robusta e regressão estatística avançada (Random Forest).
 
