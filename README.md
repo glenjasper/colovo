@@ -100,10 +100,13 @@ cd colovo
 
 # Criação de um ambiente virtual
 python -m venv env_colovo
+
 # Ativação do ambiente virtual
 source env_colovo/bin/activate
+
 # Instalação das bibliotecas python
 pip install -r requirements.txt
+
 # Instalação local do colovo
 pip install -e .
 ```
