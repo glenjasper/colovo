@@ -1,0 +1,16 @@
+COLOVO - Segmentation Training Summary
+=============================================
+
+Date................: 2026-08-24 03:30:42.195958
+
+Model...............: SimpleUNet
+Image size..........: 256
+
+Training images.....: 340
+Validation images...: 86
+
+Epochs..............: 40
+Batch size..........: 8
+Learning rate.......: 0.001
+
+Best validation loss: 0.001527

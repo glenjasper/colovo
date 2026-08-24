@@ -1,0 +1,22 @@
+COLOVO - DSM Evaluation
+===================================
+
+Evaluation strategy
+-------------------
+Training / Validation split
+
+Training samples.....: 340
+Validation samples...: 86
+
+Random Forest
+-------------
+Estimators...........: 100
+Random state.........: 42
+
+Metrics
+-------
+MAE..................: 0.5239
+RMSE.................: 0.6971
+R²...................: 0.8732
+Exact accuracy.......: 0.5233
+Within ±1 DSM........: 0.8721

@@ -1,0 +1,10 @@
+COLOVO - Segmentation Report
+========================================
+
+Total images......: 426
+Classical.........: 426 (100.0%)
+U-Net.............: 0 (0.0%)
+
+Segmentation reason(s)
+------------------
+None: 0
