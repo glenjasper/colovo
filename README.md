@@ -1,7 +1,16 @@
 # colovo
+Sistema Híbrido de Visão Computacional para Classificação de Gemas de OvosO COLOVO é uma plataforma automatizada voltada para a avicultura de precisão e controle de qualidade laboratorial. Seu objetivo principal é mensurar o nível de pigmentação da gema do ovo com base na escala comercial DSM (Digital Yolk Color Fan).O sistema substitui a avaliação visual humana subjetiva por um pipeline rigoroso de visão computacional e inteligência artificial, combinando processamento digital de imagens clássico, redes neurais convolucionais (U-Net) para segmentação robusta e regressão estatística avançada (Random Forest).
 
-## Fluxo de Preparação e Treinamento da Segmentação (Auto-Labeling + U-Net)
-Este diagrama detalha o processo desde as imagens brutas em formato de câmera até a exportação do arquivo binário de pesos da rede neural PyTorch.
+## Objetivos
+- *Padronização Industrial*: Eliminar a variação humana na classificação da cor da gema.
+- *Segmentação Resiliente*: Isolar a gema com precisão, mesmo sob variações de iluminação, presença de clara ou quebra estrutural.
+- *Predição de Alta Precisão*: Estimar o valor contínuo e a classe discreta do leque DSM através do perfil colorimétrico multiespacial (HSV + LAB).
+
+## Arquitetura e Engenharia de Software
+O ecossistema do projeto é dividido em três macrossegmentos modulares, descritos abaixo por seus fluxogramas de engenharia.
+
+### Fluxo de Preparação e Treinamento da Segmentação (Auto-Labeling + U-Net)
+Para eliminar a necessidade de anotação manual exaustiva de milhares de imagens, o COLOVO utiliza uma estratégia de *Auto-Labeling*. O algoritmo clássico baseado em limiarização HSV gera as primeiras máscaras-alvo ideais, que servem de gabarito estruturado para treinar uma rede profunda U-Net. A rede neural aprende a generalizar e corrigir imperfeições onde o algoritmo clássico falharia.
 
 ```mermaid
 graph TD
@@ -25,8 +34,8 @@ graph TD
     class G models;
 ```
 
-## Fluxo de Treinamento do Modelo DSM (Random Forest)
-Este diagrama detalha como o total de imagens passam pela extração colorimétrica para treinar o estimador estatístico, incluindo a divisão exata observada nos seus relatórios de validação.
+### Fluxo de Treinamento do Modelo DSM (Random Forest)
+Uma vez isolada a região exata da gema pelo modelo binário de segmentação, o pipeline executa uma extração estatística rigorosa das propriedades físicas de cor (medianas e desvios padrões nos canais HSV e LAB). Esses vetores numéricos alimentam um regressor *Random Forest*, validado estatisticamente para mapear as nuances cromáticas no espectro DSM.
 
 ```mermaid
 graph TD
@@ -52,8 +61,8 @@ graph TD
     class F models;
 ```
 
-## Uso do Sistema em Produção (Inference Pipeline Híbrido)
-Este diagrama documenta a arquitetura de execução em tempo real do aplicativo Streamlit, detalhando o comportamento lógico do algoritmo de contingência (_fallback_).
+### Uso do Sistema em Produção (Inference Pipeline Híbrido)
+Em tempo de execução, o COLOVO adota uma abordagem de *tolerância a falhas* (_fallback_ automático). O sistema prioriza a velocidade computacional do processamento clássico HSV. Se o número de pixels válidos detectados for inferior a 100 (indicando falha crítica de leitura, reflexo excessivo ou oclusão), o pipeline invoca de forma transparente o modelo de IA U-Net para garantir que a gema seja perfeitamente isolada.
 
 ```mermaid
 graph TD
@@ -79,4 +88,30 @@ graph TD
     class C logic;
     class B,D,E,G,H action;
     class F,I out;
+```
+
+## Como Usar
+### Executando a Interface Web (Streamlit)
+Para rodar a aplicação interativa de análise unitária em tempo real, execute o comando:
+```bash
+streamlit run app/streamlit_app.py
+```
+## Passos de Treinamento e Reprodução
+Se desejar reconfigurar, atualizar os pesos da IA ou treinar novamente o estimador estatístico do zero, execute a sequência abaixo:
+
+### Geração automática de máscaras (Auto-Labeling):
+```bash
+python scripts/generate_masks.py
+```
+### Divisão do dataset de segmentação:
+```bash
+python scripts/split_dataset.py
+```
+### Treinamento da Rede Neural U-Net:
+```bash
+python scripts/train_segmentation.py
+```
+### Extração de features colorimétricas e treino do modelo DSM:
+```bash
+python scripts/train_dsm.py
 ```
