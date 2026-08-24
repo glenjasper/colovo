@@ -110,30 +110,31 @@ pip install -r requirements.txt
 # Instalação local do colovo
 pip install -e .
 ```
-
-## Passos de Treinamento e Reprodução
-Se desejar reconfigurar, atualizar os pesos da IA ou treinar novamente o estimador estatístico do zero, execute a sequência abaixo:
-
-### Geração automática de máscaras (Auto-Labeling):
-```bash
-python scripts/generate_masks.py
-```
-### Divisão do dataset de segmentação:
-```bash
-python scripts/split_dataset.py
-```
-### Treinamento da Rede Neural U-Net:
-```bash
-python scripts/train_segmentation.py
-```
-### Extração de features colorimétricas e treino do modelo DSM:
-```bash
-python scripts/train_dsm.py
-```
+> *Nota*: O código baixado já contém os modelos treinados (models/dsm_random_forest.pkl e models/yolk_segmentation.pth), basta executar o script _app/streamlit_app.py_.
 
 ## Como Usar
 ### Executando a Interface Web (Streamlit)
 Para rodar a aplicação interativa de análise unitária em tempo real, execute o comando:
 ```bash
 streamlit run app/streamlit_app.py
+```
+
+## Passos de Treinamento e Reprodução
+Se desejar reconfigurar, atualizar os pesos da IA ou treinar novamente o estimador estatístico do zero, execute a sequência abaixo:
+
+### 1. Geração automática de máscaras (Auto-Labeling):
+```bash
+python scripts/generate_masks.py
+```
+### 2. Divisão do dataset de segmentação:
+```bash
+python scripts/split_dataset.py
+```
+### 3. Treinamento da Rede Neural U-Net:
+```bash
+python scripts/train_segmentation.py
+```
+### 4. Extração de features colorimétricas e treino do modelo DSM:
+```bash
+python scripts/train_dsm.py
 ```
