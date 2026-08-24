@@ -91,7 +91,7 @@ graph TD
     class F,I out;
 ```
 
-## Instalação de um ambiente local
+## Instalação em um ambiente local
 Sequência de passos para a instalação local do colovo usando um ambiente virtual:
 ```bash
 # Baixar o código fonte
