@@ -22,7 +22,7 @@ def main():
     final_gap = (final_validation_loss - final_train_loss)
     total_epochs = len(df)
 
-    plt.figure(figsize = (8, 6))
+    plt.figure(figsize = (8, 5))
     plt.plot(df["epoch"], df["train_loss"], label = "Training", linewidth = 2)
     plt.plot(df["epoch"], df["validation_loss"], label = "Validation", linewidth = 2)
 

@@ -46,7 +46,7 @@ def calculate_metrics(df):
             "mean_error": mean_error}
 
 def plot_predictions(df, metrics):
-    plt.figure(figsize = (8, 8))
+    plt.figure(figsize = (8, 5))
     plt.scatter(df["DSM"], df["Predicted_DSM"], alpha = 0.7)
 
     min_value = min(df["DSM"].min(), df["Predicted_DSM"].min())
