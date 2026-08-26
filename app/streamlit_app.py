@@ -27,16 +27,19 @@ def load_pipeline():
 
 # Inicialização da Página
 st.set_page_config(page_title = "COLOVO", layout = "centered")
-st.title("🥚 COLOVO")
+BANNER_PATH = os.path.join(os.path.dirname(__file__), "colovo_transparent.png") 
+if os.path.exists(BANNER_PATH):
+    st.image(BANNER_PATH, use_container_width = True)
+# st.title("🥚 COLOVO")
 
 pipeline = load_pipeline()
 
 # --- Painel Lateral de Controle ---
 with st.sidebar:
     st.header("⚙️ Painel de Operação")
-    uploaded = st.file_uploader("Carregar Amostra da Gema", type = ["jpg", "jpeg", "png"])
+    uploaded = st.file_uploader("Carregar foto da gema", type = ["jpg", "jpeg", "png"])
     st.markdown("---")
-    st.info("ℹ️ Certifique-se de que a iluminação da amostra esteja padronizada.")
+    st.info("ℹ️ Para garantir uma boa análise, envie uma foto nítida, com bom foco e em ambiente bem iluminado.")
 
 if uploaded:
     image = load_image(uploaded)
